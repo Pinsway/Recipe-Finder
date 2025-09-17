@@ -6,7 +6,7 @@ Erik Anmann -
 Markus Roletsky -
 Oskar Proos -
 Oskar Pärsim - 
-Ruud Tammel - 
+Ruud Tammel
 
 # Planned Features:
 1) 
