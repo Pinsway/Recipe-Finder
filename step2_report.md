@@ -15,6 +15,17 @@ This allows the recipes to persist even after closing the app.
 
 ## Challenges and Solutions
 
-### Challenge 1 - Implementing local data storage
-Implementing logic to store data locally was something new to us. 
-We used AI guidance and Android documentations to help us understand how SharedPreferences and Gson work together.
+### **1. Initializing the project**
+**Challenge:** Getting the project set up was more complicated than expected. Our inital repository was not initialized as an Android project, but just had the user-stories and sketches.
+
+**Solution:** We used the practise sessions repository as a template for our own.
+
+### **2. Implementing local data storage**
+**Challenge:** Implementing logic to store data locally was something new to us. 
+
+**Solution:** We used AI guidance and Android documentations to help us understand how SharedPreferences and Gson work together.
+
+### **3. Implementing basic navigation**
+**Challenge:** Setting up navigation between the three pages (Home, Add Item, Profile) required understanding the Navigation Compose framework and managing screen states correctly.  
+
+**Solution:** We followed Android’s Navigation Compose documentation and used some help from AI to get a working solution.
