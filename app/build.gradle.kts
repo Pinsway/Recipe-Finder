@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -37,6 +38,10 @@ android {
         compose = true
     }
 }
+ksp {
+    // ensure schema files are written to app/schemas
+    arg("room.schemaLocation", file("schemas").absolutePath)
+}
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>()
     .configureEach { compilerOptions { jvmTarget.set(JvmTarget.fromTarget(libs.versions.jvm.target.get())) } }
 
@@ -69,5 +74,13 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:1.7.0")
     implementation("androidx.activity:activity-compose:1.9.2")
     implementation("androidx.compose.material:material-icons-extended:1.7.0")
-    implementation("com.google.code.gson:gson:2.10.1")
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    // Add KSP compiler (version from catalog)
+    ksp(libs.androidx.room.compiler)
+    // DataStore (Preferences)
+    implementation(libs.androidx.datastore.preferences)
+
+    implementation(libs.google.gson)
 }

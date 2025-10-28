@@ -12,7 +12,11 @@ activityCompose = "1.10.1"
 composeBom = "2025.08.01"
 lifecycleRuntimeKtxVersion = "2.9.3"
 jvm-target = "11"
-material3 = "1.3.2"
+material3 = "1.4.0"
+room = "2.8.3"
+ksp = "2.2.20-2.0.4"
+datastore = "1.1.7"
+gson = "2.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,8 +37,19 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+# --- Room (local database) ---
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+# --- DataStore (key–value local storage) ---
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+
+google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# --- KSP (for Room annotation processing) ---
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

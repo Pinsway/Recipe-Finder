@@ -5,6 +5,9 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ee.ut.cs.recipefinder.domain.model.Recipe
 
+/**
+ * @deprecated
+ */
 object RecipeStorage {
     private const val PREF_NAME = "recipe_prefs"
     private const val KEY_RECIPES = "recipes"
