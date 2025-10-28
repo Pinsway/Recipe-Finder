@@ -6,8 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ee.ut.cs.recipefinder.ui.home.HomeScreen
-import ee.ut.cs.recipefinder.ui.add.AddRecipeScreen
 import ee.ut.cs.recipefinder.ui.profile.ProfileScreen
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import ee.ut.cs.recipefinder.ui.home.RecipeDetailScreen
 
 @Composable
 fun AppNavigation() {
@@ -18,7 +20,13 @@ fun AppNavigation() {
         startDestination = "home"
     ) {
         composable("home") { HomeScreen(navController) }
-        composable("add") { AddRecipeScreen(navController) }
         composable("profile") { ProfileScreen(navController) }
+        composable(
+            route = "detail/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id") ?: ""
+            RecipeDetailScreen(navController, recipeId = id)
+        }
     }
 }

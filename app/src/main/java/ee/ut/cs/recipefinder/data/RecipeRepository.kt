@@ -41,4 +41,27 @@ class RecipeRepository(private val dao: RecipeDao) {
             )
         }
     }
+
+    /**
+     * Fetches recipes by a list of first letters (a..z) to broaden results.
+     */
+    suspend fun fetchRecipesByFirstLetters(letters: List<Char>): Resource<List<Recipe>> {
+        return try {
+            val all = mutableListOf<Recipe>()
+            for (ch in letters) {
+                val response = api.searchMealsByFirstLetter(ch.toString())
+                val items = response.meals?.map { it.toDomain() } ?: emptyList()
+                items.forEach { saveRecipe(it) }
+                all += items
+            }
+            // Deduplicate by id
+            val unique = all.distinctBy { it.id }
+            Resource.Success(unique)
+        } catch (e: Exception) {
+            Resource.Error(
+                message = "Failed to fetch more recipes.",
+                throwable = e
+            )
+        }
+    }
 }
