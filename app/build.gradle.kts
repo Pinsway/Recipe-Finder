@@ -83,4 +83,6 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.google.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }
