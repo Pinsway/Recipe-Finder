@@ -92,10 +92,6 @@ fun HomeScreen(navController: NavController, isDarkTheme: Boolean, onThemeChange
                         )
                     }
                 },
-                // Make TopAppBar transparent to see the gradient behind it
-                colors = TopAppBarDefaults.topAppBarColors(
-
-                )
             )
         },
         bottomBar = {
