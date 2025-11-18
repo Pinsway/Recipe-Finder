@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- If the device is in light mode the splash screen will be light -->
-    <style name="Theme.RecipeFinder" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
-
+    <!-- If the device is in dark mode, the splash screen will be dark -->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <!-- Set the splash screen background color for light mode -->
-        <item name="windowSplashScreenBackground">@color/light_background</item>
-
+        <!-- Set the splash screen background color for dark mode -->
+        <item name="windowSplashScreenBackground">@color/dark_background</item>
         <!-- Set the splash screen icon-->
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-
         <!-- Set the theme transition after splash screen -->
         <item name="postSplashScreenTheme">@style/Theme.RecipeFinder</item>
     </style>

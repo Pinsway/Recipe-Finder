@@ -17,19 +17,39 @@ import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import ee.ut.cs.recipefinder.data.remote.MealDbRetrofit
-
+import ee.ut.cs.recipefinder.data.datastore.UserPreferencesManager
 class MainActivity : ComponentActivity() {
+
+    // Manager for remembering users choice (Light/Dark Mode)
+    private lateinit var userPrefsManager: UserPreferencesManager
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        // Startup Splash Screen
         installSplashScreen()
 
         super.onCreate(savedInstanceState)
 
+        userPrefsManager = UserPreferencesManager(applicationContext)
         // In-app demo DB writes removed; UI now fetches recipes from API in Home screen
 
         setContent {
-            RecipeFinderTheme {
-                AppNavigation()
+            // App starts in Light Theme by Default
+            val isDarkTheme by userPrefsManager.theme.collectAsState(initial = false)
+
+            // Saves current selected theme
+            val scope = rememberCoroutineScope()
+
+            RecipeFinderTheme(darkTheme = isDarkTheme) {
+                AppNavigation(
+                    isDarkTheme = isDarkTheme,
+                    onThemeChange = { newThemeState ->
+                        scope.launch {
+                            userPrefsManager.saveTheme(newThemeState)
+                        }
+                    }
+                )
+
+
 
 
                 // temporary test for working API call (JSON displayed on screen)

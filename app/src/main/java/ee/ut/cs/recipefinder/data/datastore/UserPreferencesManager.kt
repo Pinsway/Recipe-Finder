@@ -14,6 +14,8 @@ class UserPreferencesManager(private val context: Context) {
         private val FAVORITE_RECIPES = stringSetPreferencesKey("favorite_recipes")
         private val PREFERRED_INGREDIENTS = stringSetPreferencesKey("preferred_ingredients")
         private val EXCLUDED_INGREDIENTS = stringSetPreferencesKey("excluded_ingredients")
+
+        val IS_DARK_MODE = booleanPreferencesKey("is_dark_mode")
     }
 
     val favoriteRecipes: Flow<Set<String>> = context.dataStore.data.map { prefs ->
@@ -34,5 +36,16 @@ class UserPreferencesManager(private val context: Context) {
 
     suspend fun saveExcludedIngredients(ingredients: Set<String>) {
         context.dataStore.edit { prefs -> prefs[EXCLUDED_INGREDIENTS] = ingredients }
+    }
+
+    // Logic for saving users dark/light mode preference
+    val theme: Flow<Boolean> = context.dataStore.data.map { prefs ->
+        prefs[IS_DARK_MODE] ?: false
+    }
+
+    suspend fun saveTheme(isDarkMode: Boolean) {
+        context.dataStore.edit { prefs ->
+            prefs[IS_DARK_MODE] = isDarkMode
+        }
     }
 }

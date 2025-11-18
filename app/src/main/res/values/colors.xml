@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Colors for UI in Dark Theme -->
+    <color name="dark_primary_text">#E6E1E5</color>
+    <color name="dark_background">#1C1B1F</color>
+    <color name="dark_surface">#36343B</color>
+
+    <!-- Colors for UI in Light Theme -->
+    <color name="light_primary_text">#1C1B1F</color>
+    <color name="light_background">#FFFBFE</color>
+    <color name="light_surface">#EBE6F1</color>
+
 </resources>

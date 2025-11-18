@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.room.Room
@@ -27,7 +28,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
     val context = LocalContext.current
     val db = remember {
         Room.databaseBuilder(context, AppDatabase::class.java, "recipes.db").build()
@@ -75,7 +76,28 @@ fun HomeScreen(navController: NavController) {
     }
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Recipe Finder") }) },
+        topBar = {
+            TopAppBar(
+                title = { Text("Recipe Finder") },
+                actions = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(end = 8.dp)
+                    ) {
+                        Text(if (isDarkTheme) "Dark" else "Light")
+                        Spacer(Modifier.width(8.dp))
+                        Switch(
+                            checked = isDarkTheme,
+                            onCheckedChange = onThemeChange // This triggers the change in MainActivity
+                        )
+                    }
+                },
+                // Make TopAppBar transparent to see the gradient behind it
+                colors = TopAppBarDefaults.topAppBarColors(
+
+                )
+            )
+        },
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
