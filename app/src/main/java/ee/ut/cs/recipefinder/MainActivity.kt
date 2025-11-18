@@ -12,6 +12,7 @@ import ee.ut.cs.recipefinder.ui.navigation.AppNavigation
 import ee.ut.cs.recipefinder.ui.theme.RecipeFinderTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -19,6 +20,9 @@ import ee.ut.cs.recipefinder.data.remote.MealDbRetrofit
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
 
         // In-app demo DB writes removed; UI now fetches recipes from API in Home screen

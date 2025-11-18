@@ -85,4 +85,6 @@ dependencies {
     implementation(libs.google.gson)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }

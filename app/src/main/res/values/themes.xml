@@ -2,4 +2,14 @@
 <resources>
 
     <style name="Theme.RecipeFinder" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- Set the splash screen background -->
+        <item name="windowSplashScreenBackground">@drawable/background</item>
+
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+
+        <!-- Set the theme back to light theme by default -->
+        <item name="postSplashScreenTheme">@style/Theme.RecipeFinder</item>
+    </style>
 </resources>
