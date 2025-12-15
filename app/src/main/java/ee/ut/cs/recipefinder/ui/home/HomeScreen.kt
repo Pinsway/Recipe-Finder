@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.filled.Swipe
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -91,7 +92,7 @@ fun HomeScreen(navController: NavController, isDarkTheme: Boolean, onThemeChange
                             onCheckedChange = onThemeChange // This triggers the change in MainActivity
                         )
                     }
-                },
+                }
             )
         },
         bottomBar = {
@@ -101,6 +102,13 @@ fun HomeScreen(navController: NavController, isDarkTheme: Boolean, onThemeChange
                     onClick = { /* already on home */ },
                     label = { Text("Home") },
                     icon = { Icon(Icons.Default.Home, null) }
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = { navController.navigate("swiper") },
+                    label = { Text("Swiper") },
+                    icon = { Icon(Icons.Default.Swipe, null) }
+
                 )
                 NavigationBarItem(
                     selected = false,

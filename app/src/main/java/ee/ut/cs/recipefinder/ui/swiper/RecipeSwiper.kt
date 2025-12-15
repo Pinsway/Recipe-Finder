@@ -1,4 +1,4 @@
-package ee.ut.cs.recipefinder.ui.profile
+package ee.ut.cs.recipefinder.ui.swiper
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -14,10 +14,10 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
+fun RecipeSwiper(navController: NavController, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Profile") },
+            TopAppBar(title = { Text("Recipe Swiper") },
                 actions = {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -32,7 +32,6 @@ fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeCha
                     }
                 }
             )
-
         },
         bottomBar = {
             NavigationBar {
@@ -43,15 +42,15 @@ fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeCha
                     icon = { Icon(Icons.Default.Home, null) }
                 )
                 NavigationBarItem(
-                    selected = false,
-                    onClick = { navController.navigate("swiper") },
+                    selected = true,
+                    onClick = { /* already on Swiper */ },
                     label = { Text("Swiper") },
                     icon = { Icon(Icons.Default.Swipe, null) }
 
                 )
                 NavigationBarItem(
-                    selected = true,
-                    onClick = { /* already on profile */ },
+                    selected = false,
+                    onClick = { navController.navigate("profile") },
                     label = { Text("Profile") },
                     icon = { Icon(Icons.Default.Person, null) }
                 )
@@ -65,10 +64,10 @@ fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeCha
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("User: Test User", style = MaterialTheme.typography.headlineSmall)
-            Spacer(Modifier.height(8.dp))
-            Text("Favorite Recipes: Has Kebab Box")
+            Text("Testing Swipe", style = MaterialTheme.typography.headlineSmall)
 
         }
+
+
     }
 }
