@@ -46,7 +46,7 @@ fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeCha
                 NavigationBarItem(
                     selected = false,
                     onClick = { navController.navigate("swiper") },
-                    label = { Text("Swiper") },
+                    label = { Text("Discover") },
                     icon = { Icon(Icons.Default.Swipe, null) }
 
                 )

@@ -109,7 +109,7 @@ fun RecipeSwiper(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Recipe Swiper") },
+                title = { Text("Discover recipes") },
                 actions = {
                     IconButton(onClick = { navController.navigate("liked") }) {
                         Icon(Icons.Default.Favorite, contentDescription = "Liked recipes")
@@ -139,7 +139,7 @@ fun RecipeSwiper(
                 NavigationBarItem(
                     selected = true,
                     onClick = { /* already on Swiper */ },
-                    label = { Text("Swiper") },
+                    label = { Text("Discover") },
                     icon = { Icon(Icons.Default.Swipe, null) }
 
                 )

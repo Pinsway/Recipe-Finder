@@ -6,8 +6,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import ee.ut.cs.recipefinder.R
 
 @Composable
 fun RecipeFinderTheme(
@@ -17,35 +15,36 @@ fun RecipeFinderTheme(
 
     val colorScheme = if (darkTheme) {
         darkColorScheme(
-            primary = Purple80,
-            secondary = PurpleGrey80,
-            tertiary = Pink80,
-            background = colorResource(id = R.color.dark_background),
-            surface = colorResource(id = R.color.dark_surface),
+            primary = DarkPrimary,
+            secondary = DarkSecondary,
+            tertiary = DarkTertiary,
+            background = DarkBackground,
+            surface = DarkSurface,
             onPrimary = Color.Black,
-            onSecondary = Color.Black,
+            onSecondary = Color.White,
             onTertiary = Color.Black,
-            onBackground = colorResource(id = R.color.dark_primary_text),
-            onSurface = colorResource(id = R.color.dark_primary_text)
+            onBackground = DarkTextPrimary,
+            onSurface = DarkTextPrimary
         )
     } else {
         lightColorScheme(
-            primary = Purple40,
-            secondary = PurpleGrey40,
-            tertiary = Pink40,
-            background = colorResource(id = R.color.light_background),
-            surface = colorResource(id = R.color.light_surface),
+            primary = LightPrimary,
+            secondary = LightSecondary,
+            tertiary = LightTertiary,
+            background = LightBackground,
+            surface = LightSurface,
             onPrimary = Color.White,
-            onSecondary = Color.White,
+            onSecondary = Color.Black,
             onTertiary = Color.White,
-            onBackground = colorResource(id = R.color.light_primary_text),
-            onSurface = colorResource(id = R.color.light_primary_text)
+            onBackground = LightTextPrimary,
+            onSurface = LightTextPrimary
         )
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = Shapes,
         content = content
     )
 }
