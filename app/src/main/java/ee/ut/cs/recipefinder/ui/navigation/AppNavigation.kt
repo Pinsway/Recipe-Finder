@@ -1,23 +1,18 @@
 package ee.ut.cs.recipefinder.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import ee.ut.cs.recipefinder.data.datastore.UserPreferencesManager
 import ee.ut.cs.recipefinder.domain.model.Recipe
 import ee.ut.cs.recipefinder.ui.home.HomeScreen
 import ee.ut.cs.recipefinder.ui.home.RecipeDetailScreen
 import ee.ut.cs.recipefinder.ui.profile.ProfileScreen
+import ee.ut.cs.recipefinder.ui.swiper.LikedRecipesScreen
 import ee.ut.cs.recipefinder.ui.swiper.RecipeSwiper
 
 
@@ -27,6 +22,7 @@ fun AppNavigation(
     onThemeChange: (Boolean) -> Unit
 ) {
     val navController = rememberNavController()
+    val likedRecipes = remember { mutableStateListOf<Recipe>() }
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
@@ -41,13 +37,22 @@ fun AppNavigation(
             RecipeSwiper(
                 navController = navController,
                 isDarkTheme = isDarkTheme,
-                onThemeChange = onThemeChange
+                onThemeChange = onThemeChange,
+                likedRecipes = likedRecipes
             )
         }
 
         composable("profile") {
             ProfileScreen(
                 navController = navController,
+                isDarkTheme = isDarkTheme,
+                onThemeChange = onThemeChange
+            )
+        }
+        composable("liked") {
+            LikedRecipesScreen(
+                navController = navController,
+                likedRecipes = likedRecipes,
                 isDarkTheme = isDarkTheme,
                 onThemeChange = onThemeChange
             )

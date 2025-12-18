@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ArrowBack
@@ -108,6 +109,13 @@ fun HomeScreen(navController: NavController, isDarkTheme: Boolean, onThemeChange
                     onClick = { navController.navigate("swiper") },
                     label = { Text("Swiper") },
                     icon = { Icon(Icons.Default.Swipe, null) }
+
+                )
+                NavigationBarItem(
+                    selected = false,
+                    onClick = { navController.navigate("liked") },
+                    label = { Text("Liked") },
+                    icon = { Icon(Icons.Default.Favorite, null) }
 
                 )
                 NavigationBarItem(

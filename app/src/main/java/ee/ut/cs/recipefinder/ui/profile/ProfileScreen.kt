@@ -2,6 +2,7 @@ package ee.ut.cs.recipefinder.ui.profile
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Swipe
@@ -50,6 +51,13 @@ fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeCha
 
                 )
                 NavigationBarItem(
+                    selected = false,
+                    onClick = { navController.navigate("liked") },
+                    label = { Text("Liked") },
+                    icon = { Icon(Icons.Default.Favorite, null) }
+
+                )
+                NavigationBarItem(
                     selected = true,
                     onClick = { /* already on profile */ },
                     label = { Text("Profile") },
@@ -66,9 +74,6 @@ fun ProfileScreen(navController: NavController, isDarkTheme: Boolean, onThemeCha
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text("User: Test User", style = MaterialTheme.typography.headlineSmall)
-            Spacer(Modifier.height(8.dp))
-            Text("Favorite Recipes: Has Kebab Box")
-
         }
     }
 }

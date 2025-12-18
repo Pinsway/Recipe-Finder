@@ -87,5 +87,6 @@ dependencies {
     implementation(libs.converter.gson)
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.google.android.material:material:1.12.0")
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
 }
