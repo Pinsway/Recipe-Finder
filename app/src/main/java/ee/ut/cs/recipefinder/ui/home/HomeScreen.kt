@@ -27,6 +27,10 @@ import ee.ut.cs.recipefinder.data.local.AppDatabase
 import ee.ut.cs.recipefinder.domain.model.Recipe
 import ee.ut.cs.recipefinder.domain.util.Resource
 import kotlinx.coroutines.launch
+import coil.compose.AsyncImage
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.draw.clip
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -299,7 +303,20 @@ fun RecipeDetailScreen(navController: NavController, recipeId: String) {
                             .verticalScroll(rememberScrollState()),
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
+                        recipe!!.imageUrl?.let { imageUrl ->
+                            AsyncImage(
+                                model = imageUrl,
+                                contentDescription = recipe!!.title,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(240.dp)
+                                    .clip(MaterialTheme.shapes.large),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+
                         Text(recipe!!.title, style = MaterialTheme.typography.headlineSmall)
+
                         if (recipe!!.ingredients.isNotEmpty()) {
                             Text("Ingredients", style = MaterialTheme.typography.titleMedium)
                             recipe!!.ingredients.forEach { ing ->
@@ -308,14 +325,17 @@ fun RecipeDetailScreen(navController: NavController, recipeId: String) {
                                 Text("- ${ing.name}${if (qty.isNotBlank() || unit.isNotBlank()) ": $qty $unit" else ""}")
                             }
                         }
+
                         if (!recipe!!.instructions.isNullOrBlank()) {
                             Text("Instructions", style = MaterialTheme.typography.titleMedium)
                             Text(recipe!!.instructions!!)
                         }
+
                         OutlinedButton(onClick = { navController.popBackStack() }) {
                             Text("Back")
                         }
                     }
+
                 }
             }
         }
